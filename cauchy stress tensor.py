@@ -1,8 +1,6 @@
 #rock mechanics
-
 import math
 from random import randrange
-
 
 def stress_tensor(sigma_x, sigma_y, tau_xy, theta, twotheta):
         
@@ -15,10 +13,18 @@ def stress_tensor(sigma_x, sigma_y, tau_xy, theta, twotheta):
     tau_theta = ((sigma_y - sigma_x)/2) * math.sin(math.radians(twotheta)) + tau_xy * math.cos(math.radians(twotheta))
     print("Tau theta =", tau_theta)
 
+    sigma_max = 0.5 * (sigma_x + sigma_y) + math.sqrt(((sigma_x - sigma_y) / 2)**2 + (tau_xy)**2)
+    print("sigma_1 =", sigma_max)
+
+    sigma_min = 0.5 * (sigma_x + sigma_y) - math.sqrt(((sigma_x - sigma_y) / 2)**2 + (tau_xy)**2)
+    print("sigma_3 =", sigma_min)
+
     return {
         "sigma_theta": sigma_theta,
         "sigma_y_prime": sigma_y_prime,
-        "tau_theta": tau_theta
+        "tau_theta": tau_theta,
+        "sigma_max": sigma_max,
+        "sigma_min": sigma_min
     }
 
 
@@ -32,7 +38,6 @@ def generator(sigma_x, sigma_y, tau_xy, theta, twotheta):
 
     result = stress_tensor(sigma_x, sigma_y, tau_xy, theta, twotheta)
     return result
-
 
 print("Select operation.")
 print("1. question generator")
@@ -52,7 +57,6 @@ while True:
         qa = generator(sigma_x, sigma_y, tau_xy, theta, twotheta)
         print(qa)
         
-
     elif choice == '2':
         sigma_x = float(input("Enter sigma_x: "))
         sigma_y = float(input("Enter sigma_y: "))
