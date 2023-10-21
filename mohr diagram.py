@@ -29,6 +29,8 @@ def stress_tensor(sigma_x, sigma_y, tau_xy, theta, twotheta):
     mohr_circle = plt.Circle((circle_center, 0), radius, fill = False)
     ax.add_patch(mohr_circle)
     ax.axis('equal')
+    # Move the x-axis to y = 0
+    ax.spines['bottom'].set_position('zero')
 
     plt.title('wassup bejing')
     plt.show()
@@ -57,7 +59,6 @@ def generator(sigma_x, sigma_y, tau_xy, theta, twotheta):
 
     result = stress_tensor(sigma_x, sigma_y, tau_xy, theta, twotheta)
     return result
-
 
 print("Select operation.")
 print("1. question generator")
