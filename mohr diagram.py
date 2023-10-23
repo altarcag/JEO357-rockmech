@@ -29,10 +29,24 @@ def stress_tensor(sigma_x, sigma_y, tau_xy, theta, twotheta):
     mohr_circle = plt.Circle((circle_center, 0), radius, fill = False)
     ax.add_patch(mohr_circle)
     ax.axis('equal')
+
     # Move the x-axis to y = 0
     ax.spines['bottom'].set_position('zero')
+    # below I tried to collide the zero points of both axes in order to make it show the y-axis all the time somehow 
+    # but I couldn't do it so it's a problem for my future self
+    #ax.spines['left'].set_position('zero')    
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
 
-    plt.title('wassup bejing')
+    #plotting the scatter points on the circle
+    x = [sigma_x, sigma_y]
+    y = [tau_xy, tau_xy * -1]
+
+    # Create a line connecting the two points
+    plt.plot(x, y, linestyle='-')
+
+    plt.scatter(x,y)
+    plt.title('mohr diagram')
     plt.show()
 
     return {
@@ -45,7 +59,9 @@ def stress_tensor(sigma_x, sigma_y, tau_xy, theta, twotheta):
         "circle_center": circle_center,
         "mohr_circle": mohr_circle,
         "fig": fig,
-        "ax": ax
+        "ax": ax,
+        "x": x,
+        "y": y,
     }
 
 
@@ -70,9 +86,9 @@ while True:
 
     #checking the choice
     if choice == '1':
-        sigma_x = randrange(0, 50)
-        sigma_y = randrange(0, 50)
-        tau_xy = randrange(0, 20)
+        sigma_x = randrange(-50, 50)
+        sigma_y = randrange(-50, 50)
+        tau_xy = randrange(-20, 20)
         theta = randrange(1, 10) * 5
         twotheta = theta * 2
         qa = generator(sigma_x, sigma_y, tau_xy, theta, twotheta)
