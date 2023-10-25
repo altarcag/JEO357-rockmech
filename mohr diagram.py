@@ -32,20 +32,22 @@ def stress_tensor(sigma_x, sigma_y, tau_xy, theta, twotheta):
 
     # Move the x-axis to y = 0
     ax.spines['bottom'].set_position('zero')
-    # below I tried to collide the zero points of both axes in order to make it show the y-axis all the time somehow 
-    # but I couldn't do it so it's a problem for my future self
-    #ax.spines['left'].set_position('zero')    
+    ax.spines['left'].set_position('zero')
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
 
     #plotting the scatter points on the circle
     x = [sigma_x, sigma_y]
     y = [tau_xy, tau_xy * -1]
+    t = (sigma_theta, circle_center)
+    h = (tau_theta, 0)
 
     # Create a line connecting the two points
     plt.plot(x, y, linestyle='-')
+    plt.plot(t, h, linestyle='-')
 
-    plt.scatter(x,y)
+    plt.scatter(x, y)
+    plt.scatter(t, h)
     plt.title('mohr diagram')
     plt.show()
 
@@ -62,6 +64,8 @@ def stress_tensor(sigma_x, sigma_y, tau_xy, theta, twotheta):
         "ax": ax,
         "x": x,
         "y": y,
+        "t": t,
+        "h": h,
     }
 
 
