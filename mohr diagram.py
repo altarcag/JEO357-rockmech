@@ -14,17 +14,24 @@ def stress_tensor(sigma_x, sigma_y, tau_xy, theta, twotheta):
     print("Tau theta =", tau_theta)
 
     sigma_max = 0.5 * (sigma_x + sigma_y) + math.sqrt(((sigma_x - sigma_y) / 2)**2 + (tau_xy)**2)
-    print("sigma_1 =", sigma_max)
-
     sigma_min = 0.5 * (sigma_x + sigma_y) - math.sqrt(((sigma_x - sigma_y) / 2)**2 + (tau_xy)**2)
-    print("sigma_3 =", sigma_min)
+    
+    if abs(sigma_max) > abs(sigma_min):
+        sigma_1 = sigma_max
+        sigma_3 = sigma_min
 
+    else:
+        sigma_1 = sigma_min
+        sigma_3 = sigma_max
+
+    print("sigma_1 =", sigma_1)
+    print("sigma_3 =", sigma_3)
 
     #drawing the mohr circle
     radius = (sigma_max - sigma_min) / 2
     circle_center = sigma_max - radius
 
-    fig = plt.figure()
+    fig = plt.figure(figsize=(10, 6))
     ax = fig.add_subplot()
     mohr_circle = plt.Circle((circle_center, 0), radius, fill = False)
     ax.add_patch(mohr_circle)
@@ -66,6 +73,8 @@ def stress_tensor(sigma_x, sigma_y, tau_xy, theta, twotheta):
         "y": y,
         "t": t,
         "h": h,
+        "sigma_1": sigma_1,
+        "sigma_3": sigma_3,
     }
 
 
