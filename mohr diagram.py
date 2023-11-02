@@ -3,15 +3,19 @@ from random import randrange
 import matplotlib.pyplot as plt
 
 def stress_tensor(sigma_x, sigma_y, tau_xy, theta, twotheta):
+    print("-----RESULTS-----")
         
     sigma_theta = sigma_x * math.cos(math.radians(theta))**2 + sigma_y * math.sin(math.radians(theta))**2 + tau_xy * math.sin(math.radians(twotheta))
-    print("sigma theta =", sigma_theta)
+    print("sigma x' =", sigma_theta)
 
     sigma_y_prime = sigma_x * math.sin(math.radians(theta))**2 + sigma_y * math.cos(math.radians(theta))**2 - tau_xy * math.sin(math.radians(twotheta))
     print("sigma y' =", sigma_y_prime)
 
     tau_theta = ((sigma_y - sigma_x)/2) * math.sin(math.radians(twotheta)) + tau_xy * math.cos(math.radians(twotheta))
-    print("Tau theta =", tau_theta)
+    print("Tau x'y' =", tau_theta)
+
+    theta_1 = 0.5 * math.degrees(math.atan(((2 * tau_xy) / (sigma_x - sigma_y))))
+    print("theta_1 =", theta_1)
 
     sigma_max = 0.5 * (sigma_x + sigma_y) + math.sqrt(((sigma_x - sigma_y) / 2)**2 + (tau_xy)**2)
     sigma_min = 0.5 * (sigma_x + sigma_y) - math.sqrt(((sigma_x - sigma_y) / 2)**2 + (tau_xy)**2)
@@ -75,6 +79,7 @@ def stress_tensor(sigma_x, sigma_y, tau_xy, theta, twotheta):
         "h": h,
         "sigma_1": sigma_1,
         "sigma_3": sigma_3,
+        "theta_1": theta_1,
     }
 
 
