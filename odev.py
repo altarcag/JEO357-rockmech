@@ -15,7 +15,9 @@ mean_of_remaining_values = np.mean(remaining_values)
 
 print(mean_of_remaining_values)
 
-sigma_n = 0.01
+#sırasıyla sigma_n değerlerinin tek tek girilmesi gerekiyor
+#ilerleyen zamanlarda bunu tek bir aralık için belirlenen adım değeri (ödevde en az 10) için tek seferde yapan bir hale getireceğim ama şu anda vize amelesi olmakla meşgulüm.
+sigma_n = 0.01  
 jcs = 34
 jrc = 14
 phi = 20
