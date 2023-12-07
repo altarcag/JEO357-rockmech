@@ -13,7 +13,7 @@ remaining_values = np.delete(dataset, indices_of_smallest_10)
 # mean of the remainings
 mean_of_remaining_values = np.mean(remaining_values)
 
-print(mean_of_remaining_values)
+print("Schmidt ort: ", mean_of_remaining_values)
 
 #sırasıyla sigma_n değerlerinin tek tek girilmesi gerekiyor
 #ilerleyen zamanlarda bunu tek bir aralık için belirlenen adım değeri (ödevde en az 10) için tek seferde yapan bir hale getireceğim ama şu anda vize amelesi olmakla meşgulüm.
