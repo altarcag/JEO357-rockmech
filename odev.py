@@ -4,7 +4,7 @@ import numpy as np
 #dataset containing 20 Schmidt values
 dataset = np.array([21, 22, 25, 19, 25, 24, 22, 21, 19, 23, 23, 23, 24, 23, 20, 20, 22, 24, 23, 21])
 
-# Find the indices of the smallest 10 values
+#indices of the smallest 10 values
 indices_of_smallest_10 = np.argpartition(dataset, 10)[:10]
 
 #excluding the smallest 10 value
