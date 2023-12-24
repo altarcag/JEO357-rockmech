@@ -24,7 +24,7 @@ def peakgraph():
     plt.text(0.05, 0.95, f'c_p = {c_p:.2f}', transform=plt.gca().transAxes, fontsize=14, color='steelblue', verticalalignment='top', horizontalalignment='left')
     plt.text(0.05, 0.90, f'$\phi$_p = {phi_peak:.2f}', transform=plt.gca().transAxes, fontsize=14, color='steelblue' ,verticalalignment='top', horizontalalignment='left')
 
-    x_text = max(s) * 0.9  # Adjust the position of the text along the x-axis
+    x_text = max(s) * 0.9 
     y_text = m * x_text + 1
     plt.text(x_text, y_text, fr'$\tau$ = c_p + $\sigma$tan($\phi$_p)', fontsize=14, rotation=phi_peak, color='steelblue', verticalalignment='bottom', horizontalalignment='right')
 
