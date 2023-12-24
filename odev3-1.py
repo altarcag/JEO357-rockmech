@@ -39,7 +39,7 @@ plt.ylabel('q', fontsize=16)
 plt.title('p-q grafiği', fontsize=18)
 plt.show()
 
-#drawing the mothafucking mohr diagram mothafugga
+#mohr
 
 fig = plt.figure(figsize=(10, 6))
 ax = fig.add_subplot()
