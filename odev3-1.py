@@ -55,7 +55,7 @@ ax.spines['right'].set_visible(False)
 plt.text(0, c, f'c={c:.2f}', color='steelblue', fontsize=12, verticalalignment='bottom', horizontalalignment='right')
 plt.text(0.15, 0.95, f'$\phi$ = {phi:.2f}', transform=plt.gca().transAxes, fontsize=14, color='steelblue', verticalalignment='top', horizontalalignment='left')
 
-# Set ylim to ensure only the upper half is visible
+#setting ylim to 0 for making only the upper half visible
 ax.set_ylim(bottom=0)
 
 plt.axline((0, c), slope= tanphi)
